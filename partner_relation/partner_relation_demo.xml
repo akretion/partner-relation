@@ -5,7 +5,7 @@
     The licence is in the file __openerp__.py
 -->
 
-<openerp>
+<odoo>
 <data noupdate="1">
 
 <!-- RELATION TYPES -->
@@ -43,9 +43,9 @@
 
 
 <!-- PARTNER RELATIONS -->
-<!-- Elec Import is a customer of China Export -->
-<record id="relation_6_3_customer" model="res.partner.relation">
-    <field name="src_partner_id" ref="base.res_partner_6"/>
+<!-- The Jackson group is a customer of China Export -->
+<record id="relation_10_3_customer" model="res.partner.relation">
+    <field name="src_partner_id" ref="base.res_partner_10"/>
     <field name="relation_type_id" ref="is_customer_of"/>
     <field name="dest_partner_id" ref="base.res_partner_3"/>
 </record>
@@ -57,48 +57,27 @@
     <field name="dest_partner_id" ref="base.res_partner_1"/>
 </record>
 
-<!-- Delta PC is a customer of Seagate -->
-<record id="relation_4_19_customer" model="res.partner.relation">
+<!-- Delta PC is a customer of China Export -->
+<record id="relation_4_3_customer" model="res.partner.relation">
     <field name="src_partner_id" ref="base.res_partner_4"/>
     <field name="relation_type_id" ref="is_customer_of"/>
-    <field name="dest_partner_id" ref="base.res_partner_19"/>
+    <field name="dest_partner_id" ref="base.res_partner_3"/>
 </record>
 
-<!-- Maxtor is a competitor of Seagate -->
-<record id="relation_20_19_competitor" model="res.partner.relation">
-    <field name="src_partner_id" ref="base.res_partner_20"/>
-    <field name="relation_type_id" ref="is_competitor_of"/>
-    <field name="dest_partner_id" ref="base.res_partner_19"/>
-</record>
-
-<!-- Medialpole recommends Agrolait -->
-<record id="relation_8_2_recommends" model="res.partner.relation">
-    <field name="src_partner_id" ref="base.res_partner_8"/>
+<!-- Think Big Systems recommends Agrolait -->
+<record id="relation_18_2_recommends" model="res.partner.relation">
+    <field name="src_partner_id" ref="base.res_partner_18"/>
     <field name="relation_type_id" ref="recommends"/>
     <field name="dest_partner_id" ref="base.res_partner_2"/>
 </record>
 
-<!-- Agrolait is a customer of Bank Wealthy -->
-<record id="relation_2_7_customer" model="res.partner.relation">
-    <field name="src_partner_id" ref="base.res_partner_2"/>
-    <field name="relation_type_id" ref="is_customer_of"/>
-    <field name="dest_partner_id" ref="base.res_partner_7"/>
-</record>
-
-<!-- Vicking Direct is a customer of Bank Wealthy -->
-<record id="relation_22_7_customer" model="res.partner.relation">
-    <field name="src_partner_id" ref="base.res_partner_22"/>
-    <field name="relation_type_id" ref="is_customer_of"/>
-    <field name="dest_partner_id" ref="base.res_partner_7"/>
-</record>
-
-<!-- Camptocamp is a competitor of Axelor -->
+<!-- Camptocamp is a competitor of Think Big Systems -->
 <record id="relation_12_13_competitor" model="res.partner.relation">
     <field name="src_partner_id" ref="base.res_partner_12"/>
     <field name="relation_type_id" ref="is_competitor_of"/>
-    <field name="dest_partner_id" ref="base.res_partner_13"/>
+    <field name="dest_partner_id" ref="base.res_partner_18"/>
 </record>
 
 
 </data>
-</openerp>
+</odoo>

@@ -6,7 +6,7 @@
     The licence is in the file __openerp__.py
 -->
 
-<openerp>
+<odoo>
 <data>
 
 <!-- Partner Relation Type -->
@@ -92,7 +92,7 @@
     <field name="model">res.partner</field>
     <field name="inherit_id" ref="base.view_partner_form"/>
     <field name="arch"  type="xml">
-        <page string="Contacts" position="after">
+        <xpath expr="//field[@name='child_ids']/.." position="after">
             <page name="relations" string="Relations">
                 <group string="Partner Relations" name="relations">
                     <field name="relation_ids" nolabel="1">
@@ -111,9 +111,9 @@
                     </field>
                 </group>
             </page>
-        </page>
+        </xpath>
     </field>
 </record>
 
 </data>
-</openerp>
+</odoo>

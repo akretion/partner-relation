@@ -27,16 +27,16 @@
   Create a symetric relation
 -
   !record {model: res.partner.relation, id: friend1}:
-    src_partner_id: base.res_partner_address_4
+    src_partner_id: base.res_partner_address_1
     relation_type_id: friend
-    dest_partner_id: base.res_partner_address_11
+    dest_partner_id: base.res_partner_address_12
 -
   Create asymetric relation
 -
   !record {model: res.partner.relation, id: parent1}:
-    src_partner_id: base.res_partner_address_10
+    src_partner_id: base.res_partner_address_7
     relation_type_id: parent
-    dest_partner_id: base.res_partner_address_14
+    dest_partner_id: base.res_partner_address_31
 -
   Check symetric and asymetric relations
 -
@@ -51,23 +51,23 @@
     child_rel_ids = self.search(cr, uid, [('relation_type_id', '=', ref('child'))], context=context)
     assert len(child_rel_ids) == 1, 'Failure on creation of asymetric relation (2)'
     child_rel = self.browse(cr, uid, child_rel_ids[0], context=context)
-    assert child_rel.src_partner_id.id == ref('base.res_partner_address_14'), 'Bad creation of asymetric relation'
-    assert child_rel.dest_partner_id.id == ref('base.res_partner_address_10'), 'Bad creation of asymetric relation (2)'
+    assert child_rel.src_partner_id.id == ref('base.res_partner_address_31'), 'Bad creation of asymetric relation'
+    assert child_rel.dest_partner_id.id == ref('base.res_partner_address_7'), 'Bad creation of asymetric relation (2)'
 -
   Test write on relation
 -
   !python {model: res.partner.relation}: |
     friend_rel_ids = self.search(cr, uid, [('relation_type_id', '=', ref('friend'))], order='id', context=context)
     assert friend_rel_ids[1] == ref('friend1'), 'Reverse rel should be created before relation'
-    self.write(cr, uid, [ref('friend1')], {'relation_type_id': ref('recommends'), 'dest_partner_id': ref('base.res_partner_address_9')}, context=context)
+    self.write(cr, uid, [ref('friend1')], {'relation_type_id': ref('recommends'), 'dest_partner_id': ref('base.res_partner_address_35')}, context=context)
     friend1_rel = self.browse(cr, uid, friend_rel_ids[1], context=context)
     friend1_inv_rel = self.browse(cr, uid, friend_rel_ids[0], context=context)
     assert friend1_rel.relation_type_id.id == ref('recommends'), 'Wrong rel type after write'
-    assert friend1_rel.src_partner_id.id == ref('base.res_partner_address_4'), 'Wrong src_partner_id after write'
-    assert friend1_rel.dest_partner_id.id == ref('base.res_partner_address_9'), 'Wrong dest_partner_id after write'
+    assert friend1_rel.src_partner_id.id == ref('base.res_partner_address_1'), 'Wrong src_partner_id after write'
+    assert friend1_rel.dest_partner_id.id == ref('base.res_partner_address_35'), 'Wrong dest_partner_id after write'
     assert friend1_inv_rel.relation_type_id.id == ref('is_recommended_by'), 'Wrong rel type on inverse relation after write'
-    assert friend1_inv_rel.src_partner_id.id == ref('base.res_partner_address_9'), 'Wrong src_partner_id on inverse relation after write'
-    assert friend1_inv_rel.dest_partner_id.id == ref('base.res_partner_address_4'), 'Wrong dest_partner_id on inverse relation after write'
+    assert friend1_inv_rel.src_partner_id.id == ref('base.res_partner_address_35'), 'Wrong src_partner_id on inverse relation after write'
+    assert friend1_inv_rel.dest_partner_id.id == ref('base.res_partner_address_1'), 'Wrong dest_partner_id on inverse relation after write'
 -
   Test deletion of relations
 -

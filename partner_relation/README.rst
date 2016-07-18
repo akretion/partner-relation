@@ -19,7 +19,7 @@ For example, you will be able to define on the form view of partner A that :
 The relations that you define on Partner A towards Partner B will
 automatically be visible on the form view of Partner B.
 
-This module is an alternative to the module *partner_relations* (with an *s*) in the `partner-contact OCA project <https://github.com/OCA/partner-contact>`_. The two modules were developped at the same time (in 2014). This module is used in production at the `Barroux Abbey <http://www.barroux.org>`_ and there is no plan to migrate to the OCA module for the moment, because the OCA module has features that are not needed for the Abbey and this module fits perfectly the needs.
+This module is an alternative to the module *partner_relations* (with an *s*) in the `partner-contact OCA project <https://github.com/OCA/partner-contact>`_. The two modules were developped at the same time (in 2014). This module is used in production at the `Barroux Abbey <http://www.barroux.org>`_ and there is no plan to migrate to the OCA module for the moment, because the OCA module has features that are not needed for the Abbey and this module fits perfectly the needs. This module is much simpler than the OCA module: the OCA module has 1012 lines of Python code whereas this module has 160 lines (as of v8, compared using *cloc*).
 
 Configuration
 =============

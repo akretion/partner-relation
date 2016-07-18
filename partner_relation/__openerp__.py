@@ -24,7 +24,7 @@
 
 {
     'name': 'Partner Relation',
-    'version': '0.1',
+    'version': '9.0.1.0.0',
     'category': 'Partner',
     'license': 'AGPL-3',
     'summary': 'Manage relations between partners',
