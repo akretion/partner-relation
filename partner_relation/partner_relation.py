@@ -1,28 +1,12 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Partner Relation module for Odoo
-#    Copyright (C) 2014-2015 Artisanat Monastique de Provence (www.barroux.org)
-#    Copyright (C) 2015 Akretion France (www.akretion.com)
-#    @author: Alexis de Lattre <alexis.delattre@akretion.com>
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# © 2014-2016 Artisanat Monastique de Provence (www.barroux.org)
+# © 2015-2016 Akretion France (www.akretion.com)
+# @author: Alexis de Lattre <alexis.delattre@akretion.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api, _
-from openerp.exceptions import UserError
+
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 
 class ResPartnerRelationType(models.Model):
@@ -64,8 +48,8 @@ class ResPartnerRelationType(models.Model):
     @api.multi
     def write(self, vals):
         if (
-                'reverse_id' in vals
-                and not self.env.context.get('allow_write_reverse_id')):
+                'reverse_id' in vals and
+                not self.env.context.get('allow_write_reverse_id')):
             if vals['reverse_id'] != self.reverse_id.id:
                 raise UserError(
                     _('It is not possible to modify the reverse of a relation '
