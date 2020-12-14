@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  © 2014-2016 Artisanat Monastique de Provence (www.barroux.org)
-  © 2015-2016 Akretion France (www.akretion.com)
+  Copyright 2014-2020 Artisanat Monastique de Provence (www.barroux.org)
+  Copyright 2015-2020 Akretion France (www.akretion.com)
   @author: Alexis de Lattre <alexis.delattre@akretion.com>
   License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
@@ -14,11 +14,14 @@
     <field name="model">res.partner.relation.type</field>
     <field name="arch" type="xml">
         <form string="Partner Relation Types">
-            <group name="main">
-                <field name="name"/>
-                <field name="reverse_id"/>
-                <field name="active"/>
-            </group>
+            <sheet>
+                <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                <group name="main">
+                    <field name="name"/>
+                    <field name="reverse_id"/>
+                    <field name="active" invisible="1"/>
+                </group>
+            </sheet>
         </form>
     </field>
 </record>
@@ -54,7 +57,7 @@
     <field name="arch" type="xml">
         <tree string="Partner Relations" editable="bottom">
             <field name="src_partner_id"/>
-            <field name="relation_type_id" widget="selection"/>
+            <field name="relation_type_id"/>
             <field name="dest_partner_id"/>
         </tree>
     </field>
@@ -91,7 +94,7 @@
     <field name="model">res.partner</field>
     <field name="inherit_id" ref="base.view_partner_form"/>
     <field name="arch"  type="xml">
-        <xpath expr="//field[@name='child_ids']/.." position="after">
+        <page name="contact_addresses" position="after">
             <page name="relations" string="Relations">
                 <group string="Partner Relations" name="relations">
                     <field name="relation_ids" nolabel="1">
@@ -101,16 +104,16 @@
                     this field to be required for data integrity reasons
                     -->
                         <tree editable="bottom">
-                            <field name="relation_type_id" widget="selection"/>
+                            <field name="relation_type_id"/>  <!-- Don't put widget="selection" because it triggers a JS crash -->
                             <field name="dest_partner_id" string="Partner"/>
                             <button name="go_to_dest_partner" type="object"
-                                icon="terp-gtk-jump-to-ltr"
-                                string="Go to Relation Partner"/>
+                                icon="fa-arrow-right"
+                                title="Go to Relation Partner"/>
                         </tree>
                     </field>
                 </group>
             </page>
-        </xpath>
+        </page>
     </field>
 </record>
 

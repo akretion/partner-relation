@@ -1,14 +1,14 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* partner_relation
+# 	* partner_relation
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 7.0\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-22 19:57+0000\n"
-"PO-Revision-Date: 2014-05-22 19:57+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2020-12-14 22:54+0000\n"
+"PO-Revision-Date: 2020-12-14 22:54+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,54 +16,110 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: partner_relation
-#: field:res.partner.relation.type,active:0
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__active
 msgid "Active"
-msgstr "Actif"
+msgstr ""
 
 #. module: partner_relation
-#: view:res.partner:0
-msgid "Contacts"
-msgstr "Contacts"
-
-#. module: partner_relation
-#: field:res.partner.relation,dest_partner_id:0
-msgid "Destination Partner"
-msgstr "Partenaire destination"
-
-#. module: partner_relation
-#: code:addons/partner_relation/partner_relation.py:90
-#: code:addons/partner_relation/partner_relation.py:167
-#, python-format
-msgid "Error:"
-msgstr "Erreur :"
-
-#. module: partner_relation
-#: view:res.partner:0
-msgid "Go to Relation Partner"
-msgstr "Aller au partenaire lié"
-
-#. module: partner_relation
-#: view:res.partner.relation:0
-msgid "Group By..."
-msgstr "Grouper par..."
-
-#. module: partner_relation
-#: help:res.partner.relation.type,reverse_id:0
-msgid "If the relation type is asymetric, select the corresponding reverse relation type. For exemple, 'A recommends B' is an asymetric relation ; it's reverse relation is 'B is recommended by A'. If the relation type is symetric, leave the field empty. For example, 'A is a competitor of B' is a symetric relation because we also have 'B is the competitor of A'."
-msgstr "Si le type de relation est asymetrique, sélectionnez le type de relation inverse correspondant. Par exemple, 'A recommande B' est une relation asymetrique ; sa relation inverse est 'B recommande A'. Si le type de relation est symétrique, laissez le champ vide. Par exemple, 'A est un concurrent de B' est une relation symétrique car on a également 'B est un concurrent de A'."
-
-#. module: partner_relation
-#: code:addons/partner_relation/partner_relation.py:91
-#, python-format
-msgid "It is not possible to modify the reverse of a relation type. You should desactivate or delete this relation type and create a new one."
-msgstr "Il n'est pas possible de modifier l'inverse d'un type de relation. Vous devriez désactiver ou supprimer ce type de relation et en créer un nouveau."
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_type_form
+msgid "Archived"
+msgstr ""
 
 #. module: partner_relation
 #: model:ir.model,name:partner_relation.model_res_partner
-#: view:res.partner:0
-#: view:res.partner.relation:0
+msgid "Contact"
+msgstr ""
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__create_uid
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__create_date
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__dest_partner_id
+msgid "Destination Partner"
+msgstr ""
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner__display_name
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__display_name
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: partner_relation
+#: model_terms:ir.ui.view,arch_db:partner_relation.view_partner_form
+msgid "Go to Relation Partner"
+msgstr ""
+
+#. module: partner_relation
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_search
+msgid "Group By..."
+msgstr ""
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner__id
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__id
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__id
+msgid "ID"
+msgstr ""
+
+#. module: partner_relation
+#: model:ir.model.fields,help:partner_relation.field_res_partner_relation_type__reverse_id
+msgid ""
+"If the relation type is asymetric, select the corresponding reverse relation"
+" type. For exemple, 'A recommends B' is an asymetric relation ; it's reverse"
+" relation is 'B is recommended by A'. If the relation type is symetric, "
+"leave the field empty. For example, 'A is a competitor of B' is a symetric "
+"relation because we also have 'B is the competitor of A'."
+msgstr ""
+
+#. module: partner_relation
+#: code:addons/partner_relation/partner_relation.py:0
+#, python-format
+msgid ""
+"It is not possible to modify the reverse of a relation type. You should "
+"desactivate or delete this relation type and create a new one."
+msgstr ""
+"Il n'est pas possible de modifier l'inverse d'un type de relation. Vous "
+"devriez désactiver ou supprimer ce type de relation et en créer un nouveau."
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner____last_update
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation____last_update
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__write_uid
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__write_date
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: partner_relation
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_search
+#: model_terms:ir.ui.view,arch_db:partner_relation.view_partner_form
 msgid "Partner"
-msgstr "Partenaire"
+msgstr ""
+
+#. module: partner_relation
+#: model:ir.model,name:partner_relation.model_res_partner_relation
+msgid "Partner Relation"
+msgstr ""
 
 #. module: partner_relation
 #: model:ir.model,name:partner_relation.model_res_partner_relation_type
@@ -71,101 +127,69 @@ msgid "Partner Relation Type"
 msgstr "Type de relation partenaire"
 
 #. module: partner_relation
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_type_form
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_type_tree
+msgid "Partner Relation Types"
+msgstr ""
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner__relation_ids
+#: model:ir.model.fields,field_description:partner_relation.field_res_users__relation_ids
+#: model:ir.ui.menu,name:partner_relation.partner_relation_config_menu
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_tree
+#: model_terms:ir.ui.view,arch_db:partner_relation.view_partner_form
+msgid "Partner Relations"
+msgstr ""
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__name
+msgid "Relation Name"
+msgstr ""
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__relation_type_id
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_search
+msgid "Relation Type"
+msgstr ""
+
+#. module: partner_relation
 #: model:ir.actions.act_window,name:partner_relation.partner_relation_type_action
 #: model:ir.ui.menu,name:partner_relation.partner_relation_type_menu
-#: view:res.partner.relation.type:0
-msgid "Partner Relation Types"
+msgid "Relation Types"
 msgstr "Types de relation partenaire"
 
 #. module: partner_relation
 #: model:ir.actions.act_window,name:partner_relation.partner_relation_action
 #: model:ir.ui.menu,name:partner_relation.partner_relation_menu
-#: view:res.partner:0
-#: field:res.partner,relation_ids:0
-#: view:res.partner.relation:0
-msgid "Partner Relations"
-msgstr "Relations partenaires"
-
-#. module: partner_relation
-#: field:res.partner.relation.type,name:0
-msgid "Relation Name"
-msgstr "Nom de la relation"
-
-#. module: partner_relation
-#: view:res.partner.relation:0
-#: field:res.partner.relation,relation_type_id:0
-msgid "Relation Type"
-msgstr "Type de relation"
-
-#. module: partner_relation
-#: model:ir.ui.menu,name:partner_relation.partner_relation_config_menu
-#: view:res.partner:0
+#: model_terms:ir.ui.view,arch_db:partner_relation.view_partner_form
 msgid "Relations"
-msgstr "Relations"
+msgstr ""
 
 #. module: partner_relation
-#: field:res.partner.relation.type,reverse_id:0
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__reverse_id
 msgid "Reverse Relation Type"
-msgstr "Type de relation inverse"
+msgstr ""
 
 #. module: partner_relation
-#: view:res.partner.relation:0
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_search
 msgid "Search Partner Relations"
-msgstr "Recherche dans les relations partenaires"
+msgstr ""
 
 #. module: partner_relation
-#: field:res.partner.relation,src_partner_id:0
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__src_partner_id
 msgid "Source Partner"
-msgstr "Partenaire source"
+msgstr ""
 
 #. module: partner_relation
-#: sql_constraint:res.partner.relation:0
+#: model:ir.model.constraint,message:partner_relation.constraint_res_partner_relation_src_dest_partner_relation_uniq
 msgid "This relation already exists!"
-msgstr "Cette relation existe déjà !"
+msgstr ""
 
 #. module: partner_relation
-#: code:addons/partner_relation/partner_relation.py:168
+#: code:addons/partner_relation/partner_relation.py:0
 #, python-format
-msgid "You cannot write the same values on the relation and it's reverse relation."
-msgstr "Vous ne pouvez pas écrire les mêmes valeurs sur une relation et sa relation inverse."
-
-#. module: partner_relation
-#: model:res.partner.relation.type,name:partner_relation.is_competitor_of
-msgid "is a competitor of"
-msgstr "est un concurrent de"
-
-#. module: partner_relation
-#: model:res.partner.relation.type,name:partner_relation.is_customer_of
-msgid "is a customer of"
-msgstr "est un client de"
-
-#. module: partner_relation
-#: model:res.partner.relation.type,name:partner_relation.is_supplier_of
-msgid "is a supplier of"
-msgstr "est un fournisseur de"
-
-#. module: partner_relation
-#: model:res.partner.relation.type,name:partner_relation.is_integrator_of
-msgid "is an integrator of"
-msgstr "est un intégrateur de"
-
-#. module: partner_relation
-#: model:res.partner.relation.type,name:partner_relation.is_recommended_by
-msgid "is recommended by"
-msgstr "est recommandé par"
-
-#. module: partner_relation
-#: model:res.partner.relation.type,name:partner_relation.is_editor_of
-msgid "is the editor of"
-msgstr "est l'éditeur de"
-
-#. module: partner_relation
-#: model:res.partner.relation.type,name:partner_relation.recommends
-msgid "recommends"
-msgstr "recommande"
-
-#. module: partner_relation
-#: model:ir.model,name:partner_relation.model_res_partner_relation
-msgid "res.partner.relation"
-msgstr "res.partner.relation"
-
+msgid ""
+"You cannot write the same values on the relation and it's reverse relation."
+msgstr ""
+"Vous ne pouvez pas écrire les mêmes valeurs sur une relation et sa relation "
+"inverse."

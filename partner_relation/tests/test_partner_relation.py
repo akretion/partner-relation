@@ -28,13 +28,13 @@ class TestPartnerRelation(TransactionCase):
         self.friend1 = self.rpr.create({
             'src_partner_id': self.env.ref('base.res_partner_address_1').id,
             'relation_type_id': self.friend_of.id,
-            'dest_partner_id': self.env.ref('base.res_partner_address_12').id,
+            'dest_partner_id': self.env.ref('base.res_partner_address_10').id,
             })
         # Create asymetric relation
         self.parent1 = self.rpr.create({
-            'src_partner_id': self.env.ref('base.res_partner_address_7').id,
+            'src_partner_id': self.env.ref('base.res_partner_address_11').id,
             'relation_type_id': self.parent_of.id,
-            'dest_partner_id': self.env.ref('base.res_partner_address_31').id,
+            'dest_partner_id': self.env.ref('base.res_partner_address_13').id,
             })
 
     def test_relation(self):
@@ -56,10 +56,10 @@ class TestPartnerRelation(TransactionCase):
         self.assertEqual(len(child_rels), 1)
         self.assertEqual(
             child_rels[0].src_partner_id,
-            self.env.ref('base.res_partner_address_31'))
+            self.env.ref('base.res_partner_address_13'))
         self.assertEqual(
             child_rels[0].dest_partner_id,
-            self.env.ref('base.res_partner_address_7'))
+            self.env.ref('base.res_partner_address_11'))
 
     def test_write(self):
         friend_rels = self.rpr.search(
@@ -68,7 +68,7 @@ class TestPartnerRelation(TransactionCase):
         self.assertEqual(friend_rels[1], self.friend1)
         self.friend1.write({
             'relation_type_id': self.env.ref('partner_relation.recommends').id,
-            'dest_partner_id': self.env.ref('base.res_partner_address_35').id,
+            'dest_partner_id': self.env.ref('base.res_partner_address_15').id,
             })
         friend1_rel = friend_rels[1]
         friend1_inv_rel = friend_rels[0]
@@ -80,13 +80,13 @@ class TestPartnerRelation(TransactionCase):
             self.env.ref('base.res_partner_address_1'))
         self.assertEqual(
             friend1_rel.dest_partner_id,
-            self.env.ref('base.res_partner_address_35'))
+            self.env.ref('base.res_partner_address_15'))
         self.assertEqual(
             friend1_inv_rel.relation_type_id,
             self.env.ref('partner_relation.is_recommended_by'))
         self.assertEqual(
             friend1_inv_rel.src_partner_id,
-            self.env.ref('base.res_partner_address_35'))
+            self.env.ref('base.res_partner_address_15'))
         self.assertEqual(
             friend1_inv_rel.dest_partner_id,
             self.env.ref('base.res_partner_address_1'))

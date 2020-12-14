@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
-# © 2014-2016 Artisanat Monastique de Provence (www.barroux.org)
-# © 2015-2016 Akretion France (www.akretion.com)
+# Copyright 2014-2020 Artisanat Monastique de Provence (www.barroux.org)
+# Copyright 2015-2020 Akretion France (www.akretion.com)
 # @author: Alexis de Lattre <alexis.delattre@akretion.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 
-from odoo import models, fields, api, _
+from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 
 
@@ -14,8 +13,7 @@ class ResPartnerRelationType(models.Model):
     _description = "Partner Relation Type"
     _order = 'name'
 
-    name = fields.Char(
-        string='Relation Name', required=True, translate=False)
+    name = fields.Char(string='Relation Name', required=True)
     reverse_id = fields.Many2one(
         'res.partner.relation.type', string='Reverse Relation Type',
         copy=False,
@@ -27,8 +25,6 @@ class ResPartnerRelationType(models.Model):
         "because we also have 'B is the competitor of A'.")
     active = fields.Boolean(string='Active', default=True)
 
-    @api.multi
-    @api.returns('self')
     def _get_reverse_relation_type_id(self):
         self.ensure_one()
         if self.reverse_id:
@@ -38,14 +34,13 @@ class ResPartnerRelationType(models.Model):
 
     @api.model
     def create(self, vals):
-        new = super(ResPartnerRelationType, self).create(vals)
+        new = super().create(vals)
         if vals.get('reverse_id'):
             reverse = self.browse(vals['reverse_id'])
             reverse.with_context(allow_write_reverse_id=True).write(
                 {'reverse_id': new.id})
         return new
 
-    @api.multi
     def write(self, vals):
         if (
                 'reverse_id' in vals and
@@ -55,7 +50,7 @@ class ResPartnerRelationType(models.Model):
                     _('It is not possible to modify the reverse of a relation '
                         'type. You should desactivate or delete this relation '
                         'type and create a new one.'))
-        return super(ResPartnerRelationType, self).write(vals)
+        return super().write(vals)
 
 
 class ResPartnerRelation(models.Model):
@@ -84,15 +79,13 @@ class ResPartnerRelation(models.Model):
             vals['relation_type_id'])
         reverse_rel_type = rel_type._get_reverse_relation_type_id()
         # Create reverse relation
-        super(ResPartnerRelation, self).create({
+        super().create({
             'relation_type_id': reverse_rel_type.id,
             'src_partner_id': vals['dest_partner_id'],
             'dest_partner_id': vals['src_partner_id'],
             })
-        return super(ResPartnerRelation, self).create(vals)
+        return super().create(vals)
 
-    @api.multi
-    @api.returns('self')
     def _get_reverse_relation(self):
         self.ensure_one()
         reverse_rel_type = self.relation_type_id.\
@@ -104,19 +97,18 @@ class ResPartnerRelation(models.Model):
             ])
         assert len(reverse_rels) == 1, \
             'A relation always has one reverse relation'
-        return reverse_rels[0]
+        return reverse_rels
 
-    @api.multi
     def unlink(self):
         '''When a user deletes a relation, Odoo deletes the reverse
         relation automatically'''
+        relations = self
         for relation in self:
             reverse_rel = relation._get_reverse_relation()
             if reverse_rel not in self:
-                self += reverse_rel
-        return super(ResPartnerRelation, self).unlink()
+                relations |= reverse_rel
+        return super(ResPartnerRelation, relations).unlink()
 
-    @api.multi
     def write(self, vals):
         '''When a user writes on a relation, we also have to update
         the reverse relation'''
@@ -124,12 +116,12 @@ class ResPartnerRelation(models.Model):
         for relation in self:
             reverse_rel = relation._get_reverse_relation()
             if reverse_rel in self:
-                raise UserError(
-                    _("You cannot write the same values on the relation "
-                        "and it's reverse relation."))
+                raise UserError(_(
+                    "You cannot write the same values on the relation "
+                    "and it's reverse relation."))
             assert reverse_rel not in reverse_relations, \
                 "Impossible: it's relation has it's own reverse relation."
-            reverse_relations += reverse_rel
+            reverse_relations |= reverse_rel
         reverse_vals = {}
         if 'src_partner_id' in vals:
             reverse_vals['dest_partner_id'] = vals['src_partner_id']
@@ -142,19 +134,17 @@ class ResPartnerRelation(models.Model):
                 rel_type._get_reverse_relation_type_id().id
         super(ResPartnerRelation, reverse_relations).write(
             reverse_vals)
-        return super(ResPartnerRelation, self).write(vals)
+        return super().write(vals)
 
-    @api.multi
     def go_to_dest_partner(self):
         self.ensure_one()
         action = {
             'name': self.env['res.partner']._description,
             'type': 'ir.actions.act_window',
             'res_model': 'res.partner',
-            'view_type': 'form',
             'view_mode': 'form,tree,kanban',
             'target': 'current',
-            'res_id': self[0].dest_partner_id.id,
+            'res_id': self.dest_partner_id.id,
             }
         return action
 
