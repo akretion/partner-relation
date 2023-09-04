@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-# © 2015-2016 Akretion France (www.akretion.com)
+# © 2015-2023 Akretion France (www.akretion.com)
 # @author: Alexis de Lattre <alexis.delattre@akretion.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
@@ -8,36 +7,37 @@ from odoo.tests.common import TransactionCase
 
 class TestPartnerRelation(TransactionCase):
 
-    def setUp(self):
-        super(TestPartnerRelation, self).setUp()
-        self.rprt = self.env['res.partner.relation.type']
-        self.rpr = self.env['res.partner.relation']
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.rprt = cls.env['res.partner.relation.type']
+        cls.rpr = cls.env['res.partner.relation']
         # Create a symetric relation type
-        self.friend_of = self.rprt.create({'name': 'Friend of'})
+        cls.friend_of = cls.rprt.create({'name': 'Friend of'})
         # Create an asymetric relation type
-        self.parent_of = self.rprt.create({'name': 'Parent of'})
+        cls.parent_of = cls.rprt.create({'name': 'Parent of'})
         # Create the reverse of the asymetric relation type
-        self.child_of = self.rprt.create({
+        cls.child_of = cls.rprt.create({
             'name': 'Child of',
-            'reverse_id': self.parent_of.id,
+            'reverse_id': cls.parent_of.id,
             })
-        # Check the creation of the asymetric relation
-        self.assertEqual(self.parent_of.reverse_id, self.child_of)
 
         # Create a symetric relation
-        self.friend1 = self.rpr.create({
-            'src_partner_id': self.env.ref('base.res_partner_address_1').id,
-            'relation_type_id': self.friend_of.id,
-            'dest_partner_id': self.env.ref('base.res_partner_address_10').id,
+        cls.friend1 = cls.rpr.create({
+            'src_partner_id': cls.env.ref('base.res_partner_address_1').id,
+            'relation_type_id': cls.friend_of.id,
+            'dest_partner_id': cls.env.ref('base.res_partner_address_10').id,
             })
         # Create asymetric relation
-        self.parent1 = self.rpr.create({
-            'src_partner_id': self.env.ref('base.res_partner_address_11').id,
-            'relation_type_id': self.parent_of.id,
-            'dest_partner_id': self.env.ref('base.res_partner_address_13').id,
+        cls.parent1 = cls.rpr.create({
+            'src_partner_id': cls.env.ref('base.res_partner_address_11').id,
+            'relation_type_id': cls.parent_of.id,
+            'dest_partner_id': cls.env.ref('base.res_partner_address_13').id,
             })
 
     def test_relation(self):
+        # Check the creation of the asymetric relation
+        self.assertEqual(self.parent_of.reverse_id, self.child_of)
         # Check symetric and asymetric relations
         friend_rels = self.rpr.search(
             [('relation_type_id', '=', self.friend_of.id)])

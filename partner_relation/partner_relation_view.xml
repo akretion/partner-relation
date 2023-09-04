@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Copyright 2014-2020 Artisanat Monastique de Provence (www.barroux.org)
-  Copyright 2015-2020 Akretion France (www.akretion.com)
+  Copyright 2014-2023 Artisanat Monastique de Provence (www.barroux.org)
+  Copyright 2015-2023 Akretion France (www.akretion.com)
   @author: Alexis de Lattre <alexis.delattre@akretion.com>
   License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
@@ -43,11 +43,11 @@
     <field name="view_mode">tree,form</field>
 </record>
 
-<menuitem id="partner_relation_config_menu" name="Partner Relations"
-    parent="base.menu_custom" sequence="100"/>
+<menuitem id="partner_relation_config_menu" name="Relations"
+    parent="contacts.res_partner_menu_config" sequence="100"/>
 
 <menuitem id="partner_relation_type_menu" action="partner_relation_type_action"
-    parent="partner_relation_config_menu" sequence="20"/>
+    parent="partner_relation_config_menu" sequence="10"/>
 
 
 <!-- Partner Relation -->
@@ -85,7 +85,7 @@
 </record>
 
 <menuitem id="partner_relation_menu" action="partner_relation_action"
-    parent="partner_relation_config_menu" sequence="10"/>
+    parent="partner_relation_config_menu" sequence="20"/>
 
 
 <!-- Partner -->
@@ -96,8 +96,8 @@
     <field name="arch"  type="xml">
         <page name="contact_addresses" position="after">
             <page name="relations" string="Relations">
-                <group string="Partner Relations" name="relations">
-                    <field name="relation_ids" nolabel="1">
+                <group name="relations">
+                    <field name="relation_ids" nolabel="1" colspan="2">
                     <!-- I can't call the tree view of
                     res.partner.relation because 'src_partner_id' is a
                     required field and it blocks... and I really want

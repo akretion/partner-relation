@@ -1,5 +1,5 @@
-# Copyright 2014-2020 Artisanat Monastique de Provence (www.barroux.org)
-# Copyright 2015-2020 Akretion France (www.akretion.com)
+# Copyright 2014-2023 Artisanat Monastique de Provence (www.barroux.org)
+# Copyright 2015-2023 Akretion France (www.akretion.com)
 # @author: Alexis de Lattre <alexis.delattre@akretion.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
@@ -32,13 +32,14 @@ class ResPartnerRelationType(models.Model):
         else:
             return self
 
-    @api.model
-    def create(self, vals):
-        new = super().create(vals)
-        if vals.get('reverse_id'):
-            reverse = self.browse(vals['reverse_id'])
-            reverse.with_context(allow_write_reverse_id=True).write(
-                {'reverse_id': new.id})
+    @api.model_create_multi
+    def create(self, vals_list):
+        new = super().create(vals_list)
+        for vals in vals_list:
+            if vals.get('reverse_id'):
+                reverse = self.browse(vals['reverse_id'])
+                reverse.with_context(allow_write_reverse_id=True).write(
+                    {'reverse_id': new.id})
         return new
 
     def write(self, vals):
@@ -70,21 +71,25 @@ class ResPartnerRelation(models.Model):
         'This relation already exists!'
         )]
 
-    @api.model
-    def create(self, vals):
+    @api.model_create_multi
+    def create(self, vals_list):
         '''When a user creates a relation, Odoo creates the reverse
         relation automatically'''
-        assert vals.get('relation_type_id'), 'relation_type_id is required'
-        rel_type = self.env['res.partner.relation.type'].browse(
-            vals['relation_type_id'])
-        reverse_rel_type = rel_type._get_reverse_relation_type_id()
+        reverse_vals_list = []
+        for vals in vals_list:
+            assert vals.get('relation_type_id'), 'relation_type_id is required'
+            rel_type = self.env['res.partner.relation.type'].browse(
+                vals['relation_type_id'])
+            reverse_rel_type = rel_type._get_reverse_relation_type_id()
+            reverse_vals_list.append({
+                'relation_type_id': reverse_rel_type.id,
+                'src_partner_id': vals['dest_partner_id'],
+                'dest_partner_id': vals['src_partner_id'],
+                })
+
         # Create reverse relation
-        super().create({
-            'relation_type_id': reverse_rel_type.id,
-            'src_partner_id': vals['dest_partner_id'],
-            'dest_partner_id': vals['src_partner_id'],
-            })
-        return super().create(vals)
+        super().create(reverse_vals_list)
+        return super().create(vals_list)
 
     def _get_reverse_relation(self):
         self.ensure_one()
