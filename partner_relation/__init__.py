@@ -1,1 +1,1 @@
-from . import partner_relation
+from . import models

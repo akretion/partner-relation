@@ -5,7 +5,7 @@
 
 {
     'name': 'Partner Relation',
-    'version': '16.0.1.0.0',
+    'version': '18.0.1.0.0',
     'category': 'Partner',
     'license': 'AGPL-3',
     'summary': 'Manage relations between partners',
@@ -13,11 +13,13 @@
     'website': 'https://github.com/akretion/partner-relation',
     'depends': ['contacts'],
     'data': [
-        'partner_relation_view.xml',
+        'views/res_partner_relation_type.xml',
+        'views/res_partner_relation.xml',
+        'views/res_partner.xml',
         'security/ir.model.access.csv',
         ],
     'demo': [
-        'partner_relation_demo.xml',
+        'demo/partner_relation_demo.xml',
         ],
     'installable': True,
 }
