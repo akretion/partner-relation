@@ -8,7 +8,8 @@ from odoo import fields, models
 
 
 class ResPartner(models.Model):
-    _inherit = 'res.partner'
+    _inherit = "res.partner"
 
     relation_ids = fields.One2many(
-        'res.partner.relation', 'src_partner_id', string='Partner Relations')
+        "res.partner.relation", "src_partner_id", string="Partner Relations"
+    )

@@ -1,82 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!--
   Copyright 2014-2023 Artisanat Monastique de Provence (www.barroux.org)
   Copyright 2015-2023 Akretion France (www.akretion.com)
   @author: Alexis de Lattre <alexis.delattre@akretion.com>
   License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
-
 <odoo noupdate="1">
+    <!-- RELATION TYPES -->
+    <record id="is_editor_of" model="res.partner.relation.type">
+        <field name="name">is the editor of</field>
+    </record>
 
-<!-- RELATION TYPES -->
-<record id="is_editor_of" model="res.partner.relation.type">
-    <field name="name">is the editor of</field>
-</record>
+    <record id="is_integrator_of" model="res.partner.relation.type">
+        <field name="name">is an integrator of</field>
+        <field name="reverse_id" ref="is_editor_of" />
+    </record>
 
-<record id="is_integrator_of" model="res.partner.relation.type">
-    <field name="name">is an integrator of</field>
-    <field name="reverse_id" ref="is_editor_of"/>
-</record>
+    <record id="is_recommended_by" model="res.partner.relation.type">
+        <field name="name">is recommended by</field>
+    </record>
 
-<record id="is_recommended_by" model="res.partner.relation.type">
-    <field name="name">is recommended by</field>
-</record>
+    <record id="recommends" model="res.partner.relation.type">
+        <field name="name">recommends</field>
+        <field name="reverse_id" ref="is_recommended_by" />
+    </record>
 
-<record id="recommends" model="res.partner.relation.type">
-    <field name="name">recommends</field>
-    <field name="reverse_id" ref="is_recommended_by"/>
-</record>
+    <record id="is_competitor_of" model="res.partner.relation.type">
+        <field name="name">is a competitor of</field>
+        <!-- This is a symetric relation -->
+    </record>
 
-<record id="is_competitor_of" model="res.partner.relation.type">
-    <field name="name">is a competitor of</field>
-    <!-- This is a symetric relation -->
-</record>
+    <record id="is_supplier_of" model="res.partner.relation.type">
+        <field name="name">is a supplier of</field>
+    </record>
 
-<record id="is_supplier_of" model="res.partner.relation.type">
-    <field name="name">is a supplier of</field>
-</record>
+    <record id="is_customer_of" model="res.partner.relation.type">
+        <field name="name">is a customer of</field>
+        <field name="reverse_id" ref="is_supplier_of" />
+    </record>
 
-<record id="is_customer_of" model="res.partner.relation.type">
-    <field name="name">is a customer of</field>
-    <field name="reverse_id" ref="is_supplier_of"/>
-</record>
+    <!-- PARTNER RELATIONS -->
+    <!-- The Jackson group is a customer of China Export -->
+    <record id="relation_10_3_customer" model="res.partner.relation">
+        <field name="src_partner_id" ref="base.res_partner_10" />
+        <field name="relation_type_id" ref="is_customer_of" />
+        <field name="dest_partner_id" ref="base.res_partner_3" />
+    </record>
 
+    <!-- Delta PC is a customer of Asustek -->
+    <record id="relation_4_1_customer" model="res.partner.relation">
+        <field name="src_partner_id" ref="base.res_partner_4" />
+        <field name="relation_type_id" ref="is_customer_of" />
+        <field name="dest_partner_id" ref="base.res_partner_1" />
+    </record>
 
-<!-- PARTNER RELATIONS -->
-<!-- The Jackson group is a customer of China Export -->
-<record id="relation_10_3_customer" model="res.partner.relation">
-    <field name="src_partner_id" ref="base.res_partner_10"/>
-    <field name="relation_type_id" ref="is_customer_of"/>
-    <field name="dest_partner_id" ref="base.res_partner_3"/>
-</record>
+    <!-- Delta PC is a customer of China Export -->
+    <record id="relation_4_3_customer" model="res.partner.relation">
+        <field name="src_partner_id" ref="base.res_partner_4" />
+        <field name="relation_type_id" ref="is_customer_of" />
+        <field name="dest_partner_id" ref="base.res_partner_3" />
+    </record>
 
-<!-- Delta PC is a customer of Asustek -->
-<record id="relation_4_1_customer" model="res.partner.relation">
-    <field name="src_partner_id" ref="base.res_partner_4"/>
-    <field name="relation_type_id" ref="is_customer_of"/>
-    <field name="dest_partner_id" ref="base.res_partner_1"/>
-</record>
+    <!-- Think Big Systems recommends Agrolait -->
+    <record id="relation_18_2_recommends" model="res.partner.relation">
+        <field name="src_partner_id" ref="base.res_partner_18" />
+        <field name="relation_type_id" ref="recommends" />
+        <field name="dest_partner_id" ref="base.res_partner_2" />
+    </record>
 
-<!-- Delta PC is a customer of China Export -->
-<record id="relation_4_3_customer" model="res.partner.relation">
-    <field name="src_partner_id" ref="base.res_partner_4"/>
-    <field name="relation_type_id" ref="is_customer_of"/>
-    <field name="dest_partner_id" ref="base.res_partner_3"/>
-</record>
-
-<!-- Think Big Systems recommends Agrolait -->
-<record id="relation_18_2_recommends" model="res.partner.relation">
-    <field name="src_partner_id" ref="base.res_partner_18"/>
-    <field name="relation_type_id" ref="recommends"/>
-    <field name="dest_partner_id" ref="base.res_partner_2"/>
-</record>
-
-<!-- Camptocamp is a competitor of Think Big Systems -->
-<record id="relation_12_13_competitor" model="res.partner.relation">
-    <field name="src_partner_id" ref="base.res_partner_12"/>
-    <field name="relation_type_id" ref="is_competitor_of"/>
-    <field name="dest_partner_id" ref="base.res_partner_18"/>
-</record>
-
-
+    <!-- Camptocamp is a competitor of Think Big Systems -->
+    <record id="relation_12_13_competitor" model="res.partner.relation">
+        <field name="src_partner_id" ref="base.res_partner_12" />
+        <field name="relation_type_id" ref="is_competitor_of" />
+        <field name="dest_partner_id" ref="base.res_partner_18" />
+    </record>
 </odoo>
