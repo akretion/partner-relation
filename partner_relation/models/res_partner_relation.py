@@ -34,23 +34,23 @@ class ResPartnerRelation(models.Model):
     def create(self, vals_list):
         """When a user creates a relation, Odoo creates the reverse
         relation automatically"""
-        reverse_vals_list = []
-        for vals in vals_list:
-            assert vals.get("relation_type_id"), "relation_type_id is required"
-            rel_type = self.env["res.partner.relation.type"].browse(
-                vals["relation_type_id"]
-            )
-            reverse_rel_type = rel_type._get_reverse_relation_type_id()
-            reverse_vals_list.append(
-                {
-                    "relation_type_id": reverse_rel_type.id,
-                    "src_partner_id": vals["dest_partner_id"],
-                    "dest_partner_id": vals["src_partner_id"],
-                }
-            )
-
-        # Create reverse relation
-        super().create(reverse_vals_list)
+        if not self.env.context.get("no_auto_create_reverse_relation"):
+            reverse_vals_list = []
+            for vals in vals_list:
+                assert vals.get("relation_type_id"), "relation_type_id is required"
+                rel_type = self.env["res.partner.relation.type"].browse(
+                    vals["relation_type_id"]
+                )
+                reverse_rel_type = rel_type._get_reverse_relation_type_id()
+                reverse_vals_list.append(
+                    {
+                        "relation_type_id": reverse_rel_type.id,
+                        "src_partner_id": vals["dest_partner_id"],
+                        "dest_partner_id": vals["src_partner_id"],
+                    }
+                )
+            # Create reverse relation
+            super().create(reverse_vals_list)
         return super().create(vals_list)
 
     def _get_reverse_relation(self):
