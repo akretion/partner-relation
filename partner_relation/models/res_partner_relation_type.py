@@ -13,7 +13,7 @@ class ResPartnerRelationType(models.Model):
     _description = "Partner Relation Type"
     _order = "name"
 
-    name = fields.Char(string="Relation Name", required=True)
+    name = fields.Char(string="Relation Name", required=True, translate=True)
     reverse_id = fields.Many2one(
         "res.partner.relation.type",
         string="Reverse Relation Type",

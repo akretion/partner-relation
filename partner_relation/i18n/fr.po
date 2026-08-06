@@ -201,3 +201,38 @@ msgid ""
 msgstr ""
 "Vous ne pouvez pas donner les mêmes valeurs à une relation et à sa relation "
 "inverse."
+
+#. module: partner_relation
+#: model:res.partner.relation.type,name:partner_relation.is_competitor_of
+msgid "is a competitor of"
+msgstr "est un concurrent de"
+
+#. module: partner_relation
+#: model:res.partner.relation.type,name:partner_relation.is_customer_of
+msgid "is a customer of"
+msgstr "est un client de"
+
+#. module: partner_relation
+#: model:res.partner.relation.type,name:partner_relation.is_supplier_of
+msgid "is a supplier of"
+msgstr "est un fournisseur de"
+
+#. module: partner_relation
+#: model:res.partner.relation.type,name:partner_relation.is_integrator_of
+msgid "is an integrator of"
+msgstr "est un intégrateur de"
+
+#. module: partner_relation
+#: model:res.partner.relation.type,name:partner_relation.is_recommended_by
+msgid "is recommended by"
+msgstr "est recommandé par"
+
+#. module: partner_relation
+#: model:res.partner.relation.type,name:partner_relation.is_editor_of
+msgid "is the editor of"
+msgstr "est l'éditeur de"
+
+#. module: partner_relation
+#: model:res.partner.relation.type,name:partner_relation.recommends
+msgid "recommends"
+msgstr "recommande"
