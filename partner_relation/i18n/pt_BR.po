@@ -1,0 +1,236 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* partner_relation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-10 06:21+0000\n"
+"PO-Revision-Date: 2026-08-06 20:00+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: pt_BR\n"
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__active
+msgid "Active"
+msgstr "Ativo"
+
+#. module: partner_relation
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_type_form
+msgid "Archived"
+msgstr "Arquivado"
+
+#. module: partner_relation
+#: model:ir.model,name:partner_relation.model_res_partner
+msgid "Contact"
+msgstr "Contato"
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__create_uid
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__create_date
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__dest_partner_id
+msgid "Destination Partner"
+msgstr "Contato de destino"
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner__display_name
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__display_name
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__display_name
+msgid "Display Name"
+msgstr "Nome exibido"
+
+#. module: partner_relation
+#: model_terms:ir.ui.view,arch_db:partner_relation.view_partner_form
+msgid "Go to Relation Partner"
+msgstr "Abrir o contato relacionado"
+
+#. module: partner_relation
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_search
+msgid "Group By..."
+msgstr "Agrupar por..."
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner__id
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__id
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__id
+msgid "ID"
+msgstr "ID"
+
+#. module: partner_relation
+#: model:ir.model.fields,help:partner_relation.field_res_partner_relation_type__reverse_id
+msgid ""
+"If the relation type is asymetric, select the corresponding reverse "
+"relation type. For exemple, 'A recommends B' is an asymetric relation ; "
+"it's reverse relation is 'B is recommended by A'. If the relation type is "
+"symetric, leave the field empty. For example, 'A is a competitor of B' is a "
+"symetric relation because we also have 'B is the competitor of A'."
+msgstr ""
+"Se o tipo de relação for assimétrico, selecione o tipo de relação inversa "
+"correspondente. Por exemplo, 'A recomenda B' é uma relação assimétrica ; "
+"sua relação inversa é 'B é recomendado por A'. Se o tipo de relação for "
+"simétrico, deixe o campo vazio. Por exemplo, 'A é concorrente de B' é uma "
+"relação simétrica, pois também temos 'B é concorrente de A'."
+
+#. module: partner_relation
+#: code:addons/partner_relation/partner_relation.py:0
+#, python-format
+msgid ""
+"It is not possible to modify the reverse of a relation type. You should "
+"desactivate or delete this relation type and create a new one."
+msgstr ""
+"Não é possível modificar a inversa de um tipo de relação. Você deve "
+"desativar ou excluir este tipo de relação e criar um novo."
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner____last_update
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation____last_update
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type____last_update
+msgid "Last Modified on"
+msgstr "Última modificação em"
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__write_uid
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__write_uid
+msgid "Last Updated by"
+msgstr "Última atualização por"
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__write_date
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__write_date
+msgid "Last Updated on"
+msgstr "Última atualização em"
+
+#. module: partner_relation
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_search
+#: model_terms:ir.ui.view,arch_db:partner_relation.view_partner_form
+msgid "Partner"
+msgstr "Contato"
+
+#. module: partner_relation
+#: model:ir.model,name:partner_relation.model_res_partner_relation
+msgid "Partner Relation"
+msgstr "Relação entre contatos"
+
+#. module: partner_relation
+#: model:ir.model,name:partner_relation.model_res_partner_relation_type
+msgid "Partner Relation Type"
+msgstr "Tipo de relação entre contatos"
+
+#. module: partner_relation
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_type_form
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_type_tree
+msgid "Partner Relation Types"
+msgstr "Tipos de relação entre contatos"
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner__relation_ids
+#: model:ir.model.fields,field_description:partner_relation.field_res_users__relation_ids
+#: model:ir.ui.menu,name:partner_relation.partner_relation_config_menu
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_tree
+#: model_terms:ir.ui.view,arch_db:partner_relation.view_partner_form
+msgid "Partner Relations"
+msgstr "Relações entre contatos"
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__name
+msgid "Relation Name"
+msgstr "Nome da relação"
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__relation_type_id
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_search
+msgid "Relation Type"
+msgstr "Tipo de relação"
+
+#. module: partner_relation
+#: model:ir.actions.act_window,name:partner_relation.partner_relation_type_action
+#: model:ir.ui.menu,name:partner_relation.partner_relation_type_menu
+msgid "Relation Types"
+msgstr "Tipos de relação"
+
+#. module: partner_relation
+#: model:ir.actions.act_window,name:partner_relation.partner_relation_action
+#: model:ir.ui.menu,name:partner_relation.partner_relation_menu
+#: model_terms:ir.ui.view,arch_db:partner_relation.view_partner_form
+msgid "Relations"
+msgstr "Relações"
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation_type__reverse_id
+msgid "Reverse Relation Type"
+msgstr "Tipo de relação inversa"
+
+#. module: partner_relation
+#: model_terms:ir.ui.view,arch_db:partner_relation.partner_relation_search
+msgid "Search Partner Relations"
+msgstr "Pesquisar relações entre contatos"
+
+#. module: partner_relation
+#: model:ir.model.fields,field_description:partner_relation.field_res_partner_relation__src_partner_id
+msgid "Source Partner"
+msgstr "Contato de origem"
+
+#. module: partner_relation
+#: model:ir.model.constraint,message:partner_relation.constraint_res_partner_relation_src_dest_partner_relation_uniq
+msgid "This relation already exists!"
+msgstr "Esta relação já existe!"
+
+#. module: partner_relation
+#: code:addons/partner_relation/partner_relation.py:0
+#, python-format
+msgid ""
+"You cannot write the same values on the relation and it's reverse relation."
+msgstr ""
+"Você não pode atribuir os mesmos valores a uma relação e à sua relação "
+"inversa."
+
+#. module: partner_relation
+#: model:res.partner.relation.type,name:partner_relation.is_competitor_of
+msgid "is a competitor of"
+msgstr "é concorrente de"
+
+#. module: partner_relation
+#: model:res.partner.relation.type,name:partner_relation.is_customer_of
+msgid "is a customer of"
+msgstr "é cliente de"
+
+#. module: partner_relation
+#: model:res.partner.relation.type,name:partner_relation.is_supplier_of
+msgid "is a supplier of"
+msgstr "é fornecedor de"
+
+#. module: partner_relation
+#: model:res.partner.relation.type,name:partner_relation.is_integrator_of
+msgid "is an integrator of"
+msgstr "é integrador de"
+
+#. module: partner_relation
+#: model:res.partner.relation.type,name:partner_relation.is_recommended_by
+msgid "is recommended by"
+msgstr "é recomendado por"
+
+#. module: partner_relation
+#: model:res.partner.relation.type,name:partner_relation.is_editor_of
+msgid "is the editor of"
+msgstr "é o editor de"
+
+#. module: partner_relation
+#: model:res.partner.relation.type,name:partner_relation.recommends
+msgid "recommends"
+msgstr "recomenda"
